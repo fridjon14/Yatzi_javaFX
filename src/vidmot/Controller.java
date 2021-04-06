@@ -69,29 +69,25 @@ public class Controller implements Initializable {
     @FXML
     private Label fxL6;
     @FXML
+    private Label fxLefriSumma;
+    @FXML
     private Label fxLpar;
     @FXML
-    private Label fxLefriSumma;
+    private Label fxLthrenna;
     @FXML
     private Label fxLferna;
     @FXML
     private Label fxLchance;
     @FXML
+    private Label fxLlitlaRod;
+    @FXML
+    private Label fxLstoraRod;
+    @FXML
+    private Label fxLfulltHus;
+    @FXML
+    private Label fxLyatzi;
+    @FXML
     private Label fxLstigAlls;
-    @FXML
-    private Button B1;
-    @FXML
-    private Button B2;
-    @FXML
-    private Button B3;
-    @FXML
-    private Button B4;
-    @FXML
-    private Button B5;
-    @FXML
-    private Button B6;
-    @FXML
-    private Button B7;
 
 
     //aðrar stýringar
@@ -128,6 +124,7 @@ public class Controller implements Initializable {
 
     @FXML
     private void naestiLeikmadur(ActionEvent actionEvent){
+        fxSkiptaUmLeikmann.setDisable(true);
         Stage s = (Stage)fxLeikmadur.getScene().getWindow();
         s.setScene(motherji.fxLeikmadur.getScene());
         System.out.println("Næsti leikmaður");
@@ -159,9 +156,9 @@ public class Controller implements Initializable {
     public void toggleKasta(boolean b) {
             fxKasta.setDisable(b);
     }
-    public void toggleSkiptaUmLeikmann(boolean b){
-        fxSkiptaUmLeikmann.setDisable(b);
-    }
+    //public void toggleSkiptaUmLeikmann(boolean b){
+    //    fxSkiptaUmLeikmann.setDisable(b);
+    //}
 
     @FXML
     public void assignScoreToField(ActionEvent event){
@@ -172,7 +169,7 @@ public class Controller implements Initializable {
         int score = calculateScore(value, numberOfTheseTypeDice);
         setStigatafla(value, score);
         setScore(value, score);
-        toggleSkiptaUmLeikmann(false);
+        fxSkiptaUmLeikmann.setDisable(false);
         toggleKasta(true);
     }
 
@@ -250,12 +247,12 @@ public class Controller implements Initializable {
         fxLefriSumma.setText(Integer.toString(getSummaStiga(6)));
         switch (id) {
             case 7:
-                value = teningar.validatePair();
+                value = teningar.validate_n_OfAKind(2);
                 fxLpar.setText(Integer.toString(value));
         }
         switch (id) {
             case 10:
-                value = teningar.validatefFourOfAKind();
+                value = teningar.validate_n_OfAKind(4);
                 fxLferna.setText(Integer.toString(value));
         }
         switch (id){

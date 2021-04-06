@@ -46,7 +46,6 @@ public class Teningar {
 
     /**
      * Segir til um hvort i-ti teningur sé geymdur
-     *
      * @param i númer tenings
      * @return satt ef teningur er geymdur annars ósatt
      */
@@ -123,27 +122,29 @@ public class Teningar {
         return c;
     }
 
+
+//    public int validatePair(){
+//        int c;
+//        for(int i = 6; i > 0; i--){
+//            c = 0;
+//            for (int j = 0; j < teningar.length; j++){
+//                if(i == teningar[j]){
+//                    c++;
+//                }
+//                if (c >= 2){
+//                    return (2 * i);
+//                }
+//            }
+//        }
+//        return 0;
+//    }
     /**
-     * Leitar að pari, byrjar á 6 og vinnur sig niður,
+     * Leitar að 2/3/4 eins, byrjar á 6 og vinnur sig niður,
+     * @param n int fjöldi samskonar staka sem leitað er að.
      * @return stigafjölda fyrir hæsta par sem eru í teningunum.
      * @return skilar 0 ef ekkert par er í boði.
      */
-    public int validatePair(){
-        int c;
-        for(int i = 6; i > 0; i--){
-            c = 0;
-            for (int j = 0; j < teningar.length; j++){
-                if(i == teningar[j]){
-                    c++;
-                }
-                if (c >= 2){
-                    return (2 * i);
-                }
-            }
-        }
-        return 0;
-    }
-    public int validatefFourOfAKind(){
+    public int validate_n_OfAKind(int n){
         int c;
         for(int i = 6; i > 0; i--) {
             c = 0;
@@ -151,12 +152,11 @@ public class Teningar {
                 if (i == teningar[j]) {
                     c++;
                 }
-                if (c >= 4) {
-                    return (4 * i);
+                if (c >= n) {
+                    return (n * i);
                 }
             }
         }
         return 0;
-
     }
 }
