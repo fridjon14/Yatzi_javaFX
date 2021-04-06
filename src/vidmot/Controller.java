@@ -100,9 +100,7 @@ public class Controller implements Initializable {
     private void geymaTening(MouseEvent mEvent){
         Node n = (Node) mEvent.getTarget();
         int teningurNumer = Integer.parseInt(n.getId());
-        System.out.println("Geyma tening");
-        System.out.println(teningurNumer);
-        teningar.setGeymdur(teningurNumer - 1, true);
+        teningar.toggleGeymdur(teningurNumer - 1);
         showDiceValue(teningurNumer);
     }
 
@@ -111,7 +109,6 @@ public class Controller implements Initializable {
         if(teningar == null) {
             teningar = new Teningar(5);
         }
-
         teningar.kasta();
         if(teningar.getFjoldiKasta() == 0)
             toggleKasta(true);
@@ -251,9 +248,24 @@ public class Controller implements Initializable {
                 fxLpar.setText(Integer.toString(value));
         }
         switch (id) {
+            case 9:
+                value = teningar.validate_n_OfAKind(3);
+                fxLthrenna.setText(Integer.toString(value));
+        }
+        switch (id) {
             case 10:
                 value = teningar.validate_n_OfAKind(4);
                 fxLferna.setText(Integer.toString(value));
+        }
+        switch (id) {
+            case 11:
+                value = teningar.validateRow(1);
+                fxLlitlaRod.setText(Integer.toString(value));
+        }
+        switch (id) {
+            case 12:
+                value = teningar.validateRow(2);
+                fxLstoraRod.setText(Integer.toString(value));
         }
         switch (id){
             case 14:

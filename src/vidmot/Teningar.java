@@ -1,5 +1,6 @@
 package vidmot;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -53,8 +54,8 @@ public class Teningar {
         return !geymdur[i];
     }
 
-    public void setGeymdur(int i, boolean b) {
-        geymdur[i] = b;
+    public void toggleGeymdur(int i) {
+        geymdur[i] = !geymdur[i];
     }
 
     /**
@@ -158,5 +159,26 @@ public class Teningar {
             }
         }
         return 0;
+    }
+    /**
+     * Raðar teningunum í hækkandi röð, og athugar hvort hver sé einum hærri þeim á undan.     *
+     * @param start int, litla röð - start = 1; stóra röð - start = 2.
+     * @return stigafjöldi fyrir litla/stóra röð.
+     * @return skilar 0 ef engin röð er í boði.
+     */
+    public int validateRow(int start){
+        Arrays.sort(teningar);
+        for(int i = 0; i < 5; i++){
+            if(start + i  != teningar[i]){
+                return 0;
+            }
+        }
+        if(start == 1){
+            return 15;
+        }
+        if(start == 2){
+            return 21;
+        }
+    return -1;
     }
 }
