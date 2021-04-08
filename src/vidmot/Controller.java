@@ -5,7 +5,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,7 +23,7 @@ public class Controller implements Initializable {
     private final Image[] dice = new Image[7];
     private final Image[] diceGeyma = new Image[7];
     private final String[] MYNDIR = new String[]{"1", "2", "3", "4", "5", "6"};
-    private int[] stigatafla = new int[14];
+    private int[] stigatafla = new int[16];
 
     public void initialize(URL url, ResourceBundle rb) {
         for (int i = 0; i < 6; i++){
@@ -72,6 +74,8 @@ public class Controller implements Initializable {
     private Label fxLefriSumma;
     @FXML
     private Label fxLpar;
+    @FXML
+    private Label fxLtvoPor;
     @FXML
     private Label fxLthrenna;
     @FXML
@@ -165,15 +169,14 @@ public class Controller implements Initializable {
         int numberOfTheseTypeDice = teningar.countDiceWithValue_X(value);
         int score = calculateScore(value, numberOfTheseTypeDice);
         setStigatafla(value, score);
-        setScore(value, score);
+        validateBonus();
+        setScoreBoard(value, score);
         fxSkiptaUmLeikmann.setDisable(false);
         toggleKasta(true);
     }
 
     @FXML
     public void showDiceValue(int dyeId) {
-        System.out.println("BlueDice");
-        System.out.println(dyeId);
         if (dyeId == 1) {
             if (teningar.getNotGeymdur(dyeId - 1))
                 fx1.setImage(dice[teningar.getTeningar()[dyeId - 1]]);
@@ -210,68 +213,121 @@ public class Controller implements Initializable {
             }
         }
     }
-
-    private void setScore(int id, int value){
-        switch(id){
+    private void validateBonus(){
+        if(stigatafla[0] == 0) {
+            int c = getSummaStiga(6);
+            if (c >= 63) {
+                setScoreBoard(0, 50);
+            }
+        }
+    }
+    private void setScoreBoard(int id, int value){
+        switch(id) {
             case 1:
                 fxL1.setText(Integer.toString(value));
-        }
-        switch (id){
+                break;
             case 2:
                 fxL2.setText(Integer.toString(value));
                 break;
-        }
-        switch (id){
             case 3:
                 fxL3.setText(Integer.toString(value));
                 break;
-        }
-        switch (id){
             case 4:
                 fxL4.setText(Integer.toString(value));
                 break;
-        }
-        switch (id){
             case 5:
                 fxL5.setText(Integer.toString(value));
                 break;
-        }
-        switch (id){
             case 6:
                 fxL6.setText(Integer.toString(value));
                 break;
-        }
-        fxLefriSumma.setText(Integer.toString(getSummaStiga(6)));
-        switch (id) {
+
             case 7:
                 value = teningar.validate_n_OfAKind(2);
                 fxLpar.setText(Integer.toString(value));
-        }
-        switch (id) {
+                break;
+            case 8:
+                value = teningar.validate_n_OfAKind(4);
+                if (value != 0) {
+                    fxLtvoPor.setText(Integer.toString(value));
+                } else {
+                    value = teningar.validatePairPlusTwoOrThree(2);
+                    fxLtvoPor.setText(Integer.toString(value));
+                }
+                break;
             case 9:
                 value = teningar.validate_n_OfAKind(3);
-                fxLthrenna.setText(Integer.toString(value));
-        }
-        switch (id) {
+                if (value == 0) {
+                    value = enginStigAlert();
+                }
+                if (value == -1) {
+                    break;
+                } else if (value == 1) {
+                    fxLthrenna.setText(Integer.toString(0));
+                }
+                break;
             case 10:
                 value = teningar.validate_n_OfAKind(4);
-                fxLferna.setText(Integer.toString(value));
-        }
-        switch (id) {
+                if (value == 0) {
+                    value = enginStigAlert();
+                }
+                if (value == -1) {
+                    break;
+                } else if (value == 1) {
+                    fxLferna.setText(Integer.toString(value));
+                }
+                break;
             case 11:
                 value = teningar.validateRow(1);
-                fxLlitlaRod.setText(Integer.toString(value));
-        }
-        switch (id) {
+                if (value == 0) {
+                    value = enginStigAlert();
+                }
+                if (value == -1) {
+                    break;
+                } else if (value == 1) {
+                    fxLlitlaRod.setText(Integer.toString(value));
+                }
+                break;
             case 12:
                 value = teningar.validateRow(2);
-                fxLstoraRod.setText(Integer.toString(value));
-        }
-        switch (id){
+                if (value == 0) {
+                    value = enginStigAlert();
+                }
+                if (value == -1) {
+                    break;
+                } else if (value == 1) {
+                    fxLstoraRod.setText(Integer.toString(value));
+                }
+                break;
+            case 13:
+                value = teningar.validate_n_OfAKind(5);
+                if (value != 0) {
+                    fxLfulltHus.setText(Integer.toString(value));
+                } else {
+                    value = teningar.validatePairPlusTwoOrThree(3);
+                    if (value == 0)
+                        fxLfulltHus.setText(Integer.toString(value));
+                }
+                break;
             case 14:
+                value = teningar.summaAllraTeninga();
                 fxLchance.setText(Integer.toString(value));
                 break;
-        }
+            case 15:
+                value = teningar.validate_n_OfAKind(5);
+                if (value == 0) {
+                    value = enginStigAlert();
+                }
+                if (value == -1) {
+                    break;
+                } else if (value == 1) {
+                    fxLyatzi.setText(Integer.toString(0));
+                    break;
+                }
+            }
+
+        setStigatafla(id, value);
+        fxLefriSumma.setText(Integer.toString(getSummaStiga(6)));
         fxLstigAlls.setText(Integer.toString(getSummaStiga(-1)));
     }
     /**
@@ -280,11 +336,30 @@ public class Controller implements Initializable {
      * @param  nrOfDice int segir til um fjölda þesskonar teninga.
      * @return stig
      */
-    private int calculateScore(int index, int nrOfDice){
-        return index * nrOfDice;
-    }
+//    private int calculateScore(int index, int nrOfDice) {
+//            return index * nrOfDice;
+//        }
+//    }
     private void setStigatafla(int index, int value){
         stigatafla[index] = value;
+        for(int i = 0; i < stigatafla.length; i++){
+            System.out.print(stigatafla[i]);
+        }
+        System.out.println();
+    }
+
+    private int enginStigAlert(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Þessi valmöguleiki gefur 0 stig. Ertu viss um að þú viljir gera þetta?",
+                ButtonType.YES,  ButtonType.CANCEL);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            return 1;
+        }
+        if (alert.getResult() == ButtonType.CANCEL) {
+            return -1;
+        }
+        return -1;
     }
 
     /**
@@ -302,17 +377,12 @@ public class Controller implements Initializable {
 
     /**
      * Reiknar summu stigatöflu frá byrjun að n-ta staki.
-     * n = -1 reiknar heildarsummu stiga.
-     * @param n int fjöldi staka sem skal leggja saman
+     * n = 16 reiknar heildarsummu stiga.
+     * @param n int fjöldi liða sem skal leggja saman
      * @return int sum summa stiga
      */
     private int getSummaStiga(int n){
         int sum = 0;
-        if(n == -1) {
-            for (int i = 0; i < stigatafla.length; i++){
-                sum += stigatafla[i];
-            }
-        }
         for (int i = 0; i < n; i++){
             sum += stigatafla[i];
         }

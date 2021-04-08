@@ -122,29 +122,22 @@ public class Teningar {
         }
         return c;
     }
+    public int summaAllraTeninga(){
+        int value = 0;
+        for (int i = 0; i < teningar.length; i++){
+            value += teningar[i];
+        }
+        return value;
+    }
 
 
-//    public int validatePair(){
-//        int c;
-//        for(int i = 6; i > 0; i--){
-//            c = 0;
-//            for (int j = 0; j < teningar.length; j++){
-//                if(i == teningar[j]){
-//                    c++;
-//                }
-//                if (c >= 2){
-//                    return (2 * i);
-//                }
-//            }
-//        }
-//        return 0;
-//    }
     /**
      * Leitar að 2/3/4 eins, byrjar á 6 og vinnur sig niður,
      * @param n int fjöldi samskonar staka sem leitað er að.
      * @return stigafjölda fyrir hæsta par sem eru í teningunum.
      * @return skilar 0 ef ekkert par er í boði.
      */
+
     public int validate_n_OfAKind(int n){
         int c;
         for(int i = 6; i > 0; i--) {
@@ -181,4 +174,54 @@ public class Teningar {
         }
     return -1;
     }
+    /**
+     * Leitar að pari og öðru pari eða þrennu, sem mynda tvö por eða fullt hús.
+     * @param n int, 2 leitar að tveimur pörum 3 leitar að fullu húsi.
+     * @return stigafjöldi fyrir tvö pör eða fullt hús.
+     * @return skilar 0 ef engin röð er í boði.
+     */
+    public int validatePairPlusTwoOrThree(int n){
+        int[] duplicates = new int[] {0, 0, 0, 0, 0, 0};
+        for(int i = 6; i > 0; i--) {
+            for (int j = 0; j < teningar.length; j++) {
+                if (i == teningar[j]) {
+                    duplicates[i - 1] += 1;
+                }
+            }
+        }
+        int value = 0;
+        int nrOfPairs = 0;
+        if(n == 2) {
+            for (int i = 6; i > 0; i--) {
+                if (duplicates[i - 1] >= 2) {
+                    value += (2 * i);
+                    nrOfPairs += 1;
+                }
+            }
+            if(nrOfPairs >= 2){
+                return value;
+            }
+        }
+
+        else if(n == 3){
+            boolean threeOfAKind = false;
+            boolean twoOfAKind = false;
+            for (int i = 6; i > 0; i--) {
+                if (duplicates[i - 1] == 3) {
+                    threeOfAKind = true;
+                }
+                if(duplicates[i - 1] == 2) {
+                    twoOfAKind = true;
+                }
+            }
+            if(threeOfAKind && twoOfAKind) {
+                return summaAllraTeninga();
+            }
+        }
+
+        return 0;
+    }
 }
+
+
+

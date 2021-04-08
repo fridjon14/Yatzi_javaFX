@@ -72,7 +72,7 @@
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Label fx:id="fxL1" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1">
+            <Label fx:id="fxL1" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
@@ -83,7 +83,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <Label fx:id="fxL3" layoutX="142.0" layoutY="39.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="fxL3" layoutX="142.0" layoutY="39.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="18.0" />
                </font>
@@ -94,7 +94,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <Label fx:id="fxL4" layoutX="142.0" layoutY="196.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="fxL4" layoutX="142.0" layoutY="196.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="18.0" />
                </font>
@@ -105,7 +105,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <Label fx:id="fxL5" layoutX="142.0" layoutY="275.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="fxL5" layoutX="142.0" layoutY="275.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="18.0" />
                </font>
@@ -116,7 +116,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <Label fx:id="fxL6" layoutX="142.0" layoutY="354.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="fxL6" layoutX="142.0" layoutY="354.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font size="18.0" />
                </font>
@@ -127,7 +127,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <Label fx:id="fxLchance" layoutX="142.0" layoutY="432.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="15">
+            <Label fx:id="fxLchance" layoutX="142.0" layoutY="432.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="15">
                <font>
                   <Font size="18.0" />
                </font>
@@ -138,7 +138,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <Label fx:id="fxL2" layoutX="142.0" layoutY="196.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="fxL2" layoutX="142.0" layoutY="196.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
@@ -181,7 +181,7 @@
             <Button id="13" fx:id="BfullHouse" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Fullt Hús" GridPane.rowIndex="14" />
             <Button id="15" fx:id="Byatzi" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Yatzi" GridPane.rowIndex="16" />
             <Button id="7" fx:id="Bpar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Par" GridPane.rowIndex="8" />
-            <Label fx:id="fxLpar" layoutX="187.0" layoutY="174.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <Label fx:id="fxLpar" layoutX="187.0" layoutY="174.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <font>
                   <Font size="18.0" />
                </font>
@@ -192,7 +192,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="fxLtvoPor" layoutX="182.0" layoutY="265.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <Label fx:id="fxLtvoPor" layoutX="182.0" layoutY="265.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <font>
                   <Font size="18.0" />
                </font>
@@ -203,7 +203,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="fxLthrenna" layoutX="182.0" layoutY="296.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+            <Label fx:id="fxLthrenna" layoutX="182.0" layoutY="296.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
                <font>
                   <Font size="18.0" />
                </font>
@@ -214,7 +214,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="fxLferna" layoutX="182.0" layoutY="325.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="11">
+            <Label fx:id="fxLferna" layoutX="182.0" layoutY="325.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
                <font>
                   <Font size="18.0" />
                </font>
@@ -225,7 +225,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="fxLlitlaRod" layoutX="182.0" layoutY="356.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="12">
+            <Label fx:id="fxLlitlaRod" layoutX="182.0" layoutY="356.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
                <font>
                   <Font size="18.0" />
                </font>
@@ -236,7 +236,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="fxLstoraRod" layoutX="182.0" layoutY="386.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="13">
+            <Label fx:id="fxLstoraRod" layoutX="182.0" layoutY="386.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
                <font>
                   <Font size="18.0" />
                </font>
@@ -247,7 +247,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="fxLfulltHus" layoutX="182.0" layoutY="416.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="14">
+            <Label fx:id="fxLfulltHus" layoutX="182.0" layoutY="416.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="14">
                <font>
                   <Font size="18.0" />
                </font>
@@ -258,7 +258,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="fxLyatzi" layoutX="187.0" layoutY="477.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="16">
+            <Label fx:id="fxLyatzi" layoutX="187.0" layoutY="477.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="16">
                <font>
                   <Font size="18.0" />
                </font>
