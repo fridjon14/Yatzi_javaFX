@@ -104,7 +104,7 @@ public class Teningar {
         for (int i=0; i < teningar.length; i++) {
             if (getNotGeymdur(i)) {
                 teningar[i] = naestaRandomTala();
-                System.out.println(teningar[i]);
+//                System.out.println(teningar[i]);
             }
         }
         return teningar;
@@ -113,14 +113,14 @@ public class Teningar {
     public void upphafsstillaFjoldiKasta() {
         this.fjoldiKasta = FJOLDIKASTA;
     }
-    public int countDiceWithValue_X(int x){
+    public int calculateScoreFromDiceWithValue_X(int x){
         int c = 0;
         for(int i = 0; i < 5; i++){
             if(teningar[i] == x){
                 c++;
             }
         }
-        return c;
+        return c * x;
     }
     public int summaAllraTeninga(){
         int value = 0;

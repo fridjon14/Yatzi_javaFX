@@ -8,7 +8,7 @@
 
 <HBox prefHeight="600.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.Controller">
    <children>
-      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="273.0">
+      <GridPane fx:id="fxStigatafla" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="273.0">
         <columnConstraints>
             <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="182.79999237060548" minWidth="10.0" prefWidth="156.79999237060548" />
             <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="203.99999237060544" minWidth="10.0" prefWidth="86.80000762939454" />
@@ -67,88 +67,21 @@
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button id="14" fx:id="B_chance" layoutX="25.0" layoutY="429.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" prefHeight="60.0" prefWidth="97.0" text="Áhætta" GridPane.rowIndex="15">
+            <Button id="7" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Samtals" GridPane.rowIndex="6" />
+            <Button id="8" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Bónus" GridPane.rowIndex="7" />
+            <Button id="9" fx:id="Bpar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Par" GridPane.rowIndex="8" />
+            <Button id="10" fx:id="BtvoPor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Tvö pör" GridPane.rowIndex="9" />
+            <Button id="11" fx:id="Bthrenna" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Þrenna" GridPane.rowIndex="10" />
+            <Button id="12" fx:id="Bferna" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Ferna" GridPane.rowIndex="11" />
+            <Button id="13" fx:id="BlitlaRod" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Litla Röð" GridPane.rowIndex="12" />
+            <Button id="14" fx:id="BstoraRod" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Stóra Röð" GridPane.rowIndex="13" />
+            <Button id="15" fx:id="BfullHouse" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Fullt Hús" GridPane.rowIndex="14" />
+            <Button id="16" fx:id="B_chance" layoutX="25.0" layoutY="429.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" prefHeight="60.0" prefWidth="97.0" text="Áhætta" GridPane.rowIndex="15">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Label fx:id="fxL1" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </Label>
-            <Label fx:id="fxL3" layoutX="142.0" layoutY="39.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </Label>
-            <Label fx:id="fxL4" layoutX="142.0" layoutY="196.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </Label>
-            <Label fx:id="fxL5" layoutX="142.0" layoutY="275.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </Label>
-            <Label fx:id="fxL6" layoutX="142.0" layoutY="354.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </Label>
-            <Label fx:id="fxLchance" layoutX="142.0" layoutY="432.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="15">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </Label>
-            <Label fx:id="fxL2" layoutX="142.0" layoutY="196.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </Label>
+            <Button id="17" fx:id="Byatzi" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Yatzi" GridPane.rowIndex="16" />
             <Label fx:id="fxLchance1" alignment="CENTER" layoutX="142.0" layoutY="453.0" maxWidth="1.7976931348623157E308" text="Stig alls:" GridPane.rowIndex="17">
                <font>
                   <Font size="20.0" />
@@ -160,7 +93,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <Label fx:id="fxLstigAlls" layoutX="142.0" layoutY="453.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="17">
+            <Label prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
@@ -171,105 +104,62 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Samtals" GridPane.rowIndex="6" />
-            <Button disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Bónus" GridPane.rowIndex="7" />
-            <Button id="8" fx:id="BtvoPor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Tvö pör" GridPane.rowIndex="9" />
-            <Button id="9" fx:id="Bthrenna" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Þrenna" GridPane.rowIndex="10" />
-            <Button id="10" fx:id="Bferna" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Ferna" GridPane.rowIndex="11" />
-            <Button id="11" fx:id="BlitlaRod" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Litla Röð" GridPane.rowIndex="12" />
-            <Button id="12" fx:id="BstoraRod" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Stóra Röð" GridPane.rowIndex="13" />
-            <Button id="13" fx:id="BfullHouse" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Fullt Hús" GridPane.rowIndex="14" />
-            <Button id="15" fx:id="Byatzi" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Yatzi" GridPane.rowIndex="16" />
-            <Button id="7" fx:id="Bpar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Par" GridPane.rowIndex="8" />
-            <Label fx:id="fxLpar" layoutX="187.0" layoutY="174.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <Label layoutX="142.0" layoutY="196.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </Label>
-            <Label fx:id="fxLtvoPor" layoutX="182.0" layoutY="265.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <Label layoutX="142.0" layoutY="39.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="18.0" />
                </font>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </Label>
-            <Label fx:id="fxLthrenna" layoutX="182.0" layoutY="296.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+            <Label layoutX="142.0" layoutY="196.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="18.0" />
                </font>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </Label>
-            <Label fx:id="fxLferna" layoutX="182.0" layoutY="325.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
+            <Label layoutX="142.0" layoutY="275.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="18.0" />
                </font>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </Label>
-            <Label fx:id="fxLlitlaRod" layoutX="182.0" layoutY="356.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
+            <Label layoutX="142.0" layoutY="354.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font size="18.0" />
                </font>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
-            </Label>
-            <Label fx:id="fxLstoraRod" layoutX="182.0" layoutY="386.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
-               <font>
-                  <Font size="18.0" />
-               </font>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
             </Label>
-            <Label fx:id="fxLfulltHus" layoutX="182.0" layoutY="416.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="14">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="fxLyatzi" layoutX="187.0" layoutY="477.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="16">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="fxLefriSumma" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Label prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
@@ -280,7 +170,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Label>
-            <Label fx:id="fxLbonus" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Label prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </GridPane.margin>
@@ -290,6 +180,116 @@
                <font>
                   <Font size="18.0" />
                </font>
+            </Label>
+            <Label layoutX="187.0" layoutY="174.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="182.0" layoutY="265.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="182.0" layoutY="296.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="182.0" layoutY="325.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="182.0" layoutY="356.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="182.0" layoutY="386.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="182.0" layoutY="416.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="14">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="142.0" layoutY="432.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="15">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+            <Label layoutX="187.0" layoutY="477.0" prefHeight="41.0" prefWidth="106.0" GridPane.columnIndex="1" GridPane.rowIndex="16">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="142.0" layoutY="453.0" prefHeight="41.0" prefWidth="106.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="17">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
             </Label>
 
          </children>
