@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox prefHeight="600.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.Controller">
+<HBox prefHeight="700.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vidmot.Controller">
    <children>
       <GridPane fx:id="fxStigatafla" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="273.0">
         <columnConstraints>
@@ -14,74 +14,80 @@
             <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="203.99999237060544" minWidth="10.0" prefWidth="86.80000762939454" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </padding>
          <children>
-            <Button id="1" fx:id="B1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" prefHeight="60.0" prefWidth="97.0" text="Ásar">
+            <Button id="1" fx:id="B1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" prefHeight="60.0" prefWidth="97.0" text="Ásar">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button id="2" fx:id="B2" layoutX="30.0" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" prefHeight="60.0" prefWidth="97.0" text="Tvistar" GridPane.rowIndex="1">
+            <Button id="2" fx:id="B2" layoutX="30.0" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" prefHeight="60.0" prefWidth="97.0" text="Tvistar" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button id="3" fx:id="B3" layoutX="30.0" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" prefHeight="60.0" prefWidth="97.0" text="Þristar" GridPane.rowIndex="2">
+            <Button id="3" fx:id="B3" layoutX="30.0" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" prefHeight="60.0" prefWidth="97.0" text="Þristar" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button id="4" fx:id="B4" layoutX="25.0" layoutY="189.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" prefHeight="60.0" prefWidth="97.0" text="Fjarkar" GridPane.rowIndex="3">
+            <Button id="4" fx:id="B4" layoutX="25.0" layoutY="189.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" prefHeight="60.0" prefWidth="97.0" text="Fjarkar" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button id="5" fx:id="B5" layoutX="25.0" layoutY="269.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" prefHeight="60.0" prefWidth="97.0" text="Fimmur" GridPane.rowIndex="4">
+            <Button id="5" fx:id="B5" layoutX="25.0" layoutY="269.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" prefHeight="60.0" prefWidth="97.0" text="Fimmur" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button id="6" fx:id="B6" layoutX="25.0" layoutY="349.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" prefHeight="60.0" prefWidth="97.0" text="Sexur" GridPane.rowIndex="5">
+            <Button id="6" fx:id="B6" layoutX="25.0" layoutY="349.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" prefHeight="60.0" prefWidth="97.0" text="Sexur" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button id="7" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Samtals" GridPane.rowIndex="6" />
-            <Button id="8" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Bónus" GridPane.rowIndex="7" />
-            <Button id="9" fx:id="Bpar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Par" GridPane.rowIndex="8" />
-            <Button id="10" fx:id="BtvoPor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Tvö pör" GridPane.rowIndex="9" />
-            <Button id="11" fx:id="Bthrenna" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Þrenna" GridPane.rowIndex="10" />
-            <Button id="12" fx:id="Bferna" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Ferna" GridPane.rowIndex="11" />
-            <Button id="13" fx:id="BlitlaRod" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Litla Röð" GridPane.rowIndex="12" />
-            <Button id="14" fx:id="BstoraRod" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Stóra Röð" GridPane.rowIndex="13" />
-            <Button id="15" fx:id="BfullHouse" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Fullt Hús" GridPane.rowIndex="14" />
-            <Button id="16" fx:id="B_chance" layoutX="25.0" layoutY="429.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" prefHeight="60.0" prefWidth="97.0" text="Áhætta" GridPane.rowIndex="15">
+            <Button id="7" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.9" style="-fx-background-color: red;" text="Samtals" GridPane.rowIndex="6">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Button id="8" disable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" opacity="0.9" style="-fx-background-color: red;" text="Bónus" GridPane.rowIndex="7">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Button>
+            <Button id="9" fx:id="Bpar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" text="Par" GridPane.rowIndex="8" />
+            <Button id="10" fx:id="BtvoPor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" text="Tvö pör" GridPane.rowIndex="9" />
+            <Button id="11" fx:id="Bthrenna" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" text="Þrenna" GridPane.rowIndex="10" />
+            <Button id="12" fx:id="Bferna" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" text="Ferna" GridPane.rowIndex="11" />
+            <Button id="13" fx:id="BlitlaRod" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" text="Litla Röð" GridPane.rowIndex="12" />
+            <Button id="14" fx:id="BstoraRod" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" text="Stóra Röð" GridPane.rowIndex="13" />
+            <Button id="15" fx:id="BfullHouse" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" text="Fullt Hús" GridPane.rowIndex="14" />
+            <Button id="16" fx:id="B_chance" layoutX="25.0" layoutY="429.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" prefHeight="60.0" prefWidth="97.0" text="Áhætta" GridPane.rowIndex="15">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button id="17" fx:id="Byatzi" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#assignScoreToField" text="Yatzi" GridPane.rowIndex="16" />
+            <Button id="17" fx:id="Byatzi" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleScoring" text="Yatzi" GridPane.rowIndex="16" />
             <Label fx:id="fxLchance1" alignment="CENTER" layoutX="142.0" layoutY="453.0" maxWidth="1.7976931348623157E308" text="Stig alls:" GridPane.rowIndex="17">
                <font>
                   <Font size="20.0" />

@@ -26,7 +26,7 @@ public class Controller implements Initializable {
     private final Image[] dice = new Image[7];
     private final Image[] diceGeyma = new Image[7];
     private final String[] MYNDIR = new String[]{"1", "2", "3", "4", "5", "6"};
-    private int[] stigatafla = new int[16];
+    private int[] stigatafla = new int[18];
     private static final int OFFSET = 17;
 
 
@@ -39,8 +39,11 @@ public class Controller implements Initializable {
         }
         dice[0] = new Image("vidmot/myndir/white/0.png");
         for (int i = 0; i < stigatafla.length; i++) {
-            stigatafla[i] = 0;
+            stigatafla[i] = -1;
         }
+        stigatafla[7] = 0;
+        stigatafla[8] = 0;
+        stigatafla[0] = 0;
     }
 
 
@@ -64,41 +67,7 @@ public class Controller implements Initializable {
     private ImageView fx4;
     @FXML
     private ImageView fx5;
-//
-//    @FXML
-//    private Label fxL1;
-//    @FXML
-//    private Label fxL2;
-//    @FXML
-//    private Label fxL3;
-//    @FXML
-//    private Label fxL4;
-//    @FXML
-//    private Label fxL5;
-//    @FXML
-//    private Label fxL6;
-//    @FXML
-//    private Label fxLefriSumma;
-//    @FXML
-//    private Label fxLpar;
-//    @FXML
-//    private Label fxLtvoPor;
-//    @FXML
-//    private Label fxLthrenna;
-//    @FXML
-//    private Label fxLferna;
-//    @FXML
-//    private Label fxLchance;
-//    @FXML
-//    private Label fxLlitlaRod;
-//    @FXML
-//    private Label fxLstoraRod;
-//    @FXML
-//    private Label fxLfulltHus;
-//    @FXML
-//    private Label fxLyatzi;
-//    @FXML
-//    private Label fxLstigAlls;
+
 
 
     //aðrar stýringar
@@ -106,6 +75,8 @@ public class Controller implements Initializable {
     // Gagnahlutir
     private Leikmadur l;
     private Teningar teningar = null;
+
+
 
     @FXML
     private void geymaTening(MouseEvent mEvent) {
@@ -133,19 +104,17 @@ public class Controller implements Initializable {
     @FXML
     private void naestiLeikmadur(ActionEvent actionEvent) {
         fxSkiptaUmLeikmann.setDisable(true);
+        enableUnusedScoreButtons();
         Stage s = (Stage) fxLeikmadur.getScene().getWindow();
         s.setScene(motherji.fxLeikmadur.getScene());
-//        System.out.println("Næsti leikmaður");
-//        System.out.println(fxLeikmadur.getScene());
-//        System.out.println(motherji);
+
         teningar = new Teningar(5);
         toggleKasta(false);
         for (int i = 1; i < 6; i++) {
             showDiceValue(i);
         }
         setTheTable();
-//        System.out.println("fjöldiKasta");
-//        System.out.println(teningar.getFjoldiKasta());
+
     }
 
     public void setLeikmadur(String nafn) {
@@ -164,12 +133,16 @@ public class Controller implements Initializable {
     public void toggleKasta(boolean b) {
         fxKasta.setDisable(b);
     }
-    //public void toggleSkiptaUmLeikmann(boolean b){
-    //    fxSkiptaUmLeikmann.setDisable(b);
-    //}
 
+
+    /**
+     * Höndlar event þegar smellt er á takka til að skrá stig.
+     * gefur viðvörum er reitur gefur 0 stig
+     * skiptir um leikmann
+     * @param event buttonclick
+     */
     @FXML
-    public void assignScoreToField(ActionEvent event) {
+    public void handleScoring(ActionEvent event) {
         Node n = (Node) event.getTarget();
         int id = Integer.parseInt(n.getId());
         System.out.println(id);
@@ -179,25 +152,31 @@ public class Controller implements Initializable {
         int score = calculateScore(id);
         //int score = calculateScore(value, numberOfTheseTypeDice);
         Label l = (Label) labels.get(id + OFFSET);
-
-        int yesOrCancel = 0;
+        Label heldarstig = (Label) labels.get(2*OFFSET+1);
+        Label bonusSum = (Label) labels.get(7+OFFSET);
+        Label bonus = (Label) labels.get(8+OFFSET);
+        int yesOrCancel = 1;
         if (score == 0) {
             yesOrCancel = enginStigAlert();
         }
         if (yesOrCancel == -1) {
             //Do nothing, wait for new event.
-        } else if (yesOrCancel == 1) {
+        }
+        else{
             l.setText(Integer.toString(score));
-            validateBonus();
             fxSkiptaUmLeikmann.setDisable(false);
             toggleKasta(true);
+            disableAllScoreButtons();
+            setScore(id, score);
+            validateBonus(bonus);
+            heldarstig.setText(Integer.toString(getSummaStiga(17)));
+            bonusSum.setText(Integer.toString(getSummaStiga(6)));
         }
-        l.setText(Integer.toString(score));
-        fxSkiptaUmLeikmann.setDisable(false);
-        toggleKasta(true);
-        n.setDisable(true);
     }
-
+    /**
+     * Birtir myndir af teningum
+     * @param dyeId
+     */
     @FXML
     public void showDiceValue(int dyeId) {
         if (dyeId == 1) {
@@ -237,77 +216,58 @@ public class Controller implements Initializable {
         }
     }
 
-    private void validateBonus() {
+    /**
+     * staðfestir að bónus fáist fyrir efstu 6 reiti
+     */
+    private void validateBonus(Label n) {
         if (stigatafla[0] == 0) {
             int c = getSummaStiga(6);
             if (c >= 63) {
+                n.setText(Integer.toString(50));
                 setScore(0, 50);
             }
         }
     }
 
+    /**
+     * Reiknar út stigafjölda eftir hvaða sögn er valin.
+     * @param id segir til eftir hvaða aðferð stigin reiknast
+     * @return
+     */
     private int calculateScore(int id) {
         int value = 0;
-        if(id > 0 && id < 7){
-            value = teningar.calculateScoreFromDiceWithValue_X(id);
-        }
         switch (id) {
-
-            case 9:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                value = teningar.calculateScoreFromDiceWithValue_X(id);
+                break;
+            case 9:                                                         //Tvenna
                 value = teningar.validate_n_OfAKind(2);
                 break;
-            case 10:
+            case 10:                                                        //Tvö pör
                 value = teningar.validate_n_OfAKind(4);
                 if (value != 0) {
                     return value;
                 }
                 value = teningar.validatePairPlusTwoOrThree(2);
                 break;
-            case 11:
+            case 11:                                                        //Þrenna
                 value = teningar.validate_n_OfAKind(3);
-//                if (value == 0) {
-//                    value = enginStigAlert();
-//                }
-//                if (value == -1) {
-//                    break;
-//                } else if (value == 1) {
-//                    fxLthrenna.setText(Integer.toString(0));
-//                }
                 break;
-            case 12:
+        case 12:                                                            //Ferna
                 value = teningar.validate_n_OfAKind(4);
-//                if (value == 0) {
-//                    value = enginStigAlert();
-//                }
-//                if (value == -1) {
-//                    break;
-//                } else if (value == 1) {
-//                    fxLferna.setText(Integer.toString(value));
-//                }
                 break;
-            case 13:
+            case 13:                                                        //Lág Röð
                 value = teningar.validateRow(1);
-//                if (value == 0) {
-//                    value = enginStigAlert();
-//                }
-//                if (value == -1) {
-//                    break;
-//                } else if (value == 1) {
-//                    fxLlitlaRod.setText(Integer.toString(value));
-//                }
                 break;
-            case 14:
+            case 14:                                                        //Há röð
                 value = teningar.validateRow(2);
-//                if (value == 0) {
-//                    value = enginStigAlert();
-//                }
-//                if (value == -1) {
-//                    break;
-//                } else if (value == 1) {
-//                    fxLstoraRod.setText(Integer.toString(value));
-//                }
                 break;
-            case 15:
+            case 15:                                                        //Fullt hús
                 value = teningar.validate_n_OfAKind(5);
                 if (value != 0) {
                     return value;
@@ -315,48 +275,33 @@ public class Controller implements Initializable {
                     value = teningar.validatePairPlusTwoOrThree(3);
                 }
                 break;
-            case 16:
+            case 16:                                                        //Áhætta
                 value = teningar.summaAllraTeninga();
-//                fxLchance.setText(Integer.toString(value));
                 break;
-            case 17:
+            case 17:                                                        //Yatzi
                 value = teningar.validate_n_OfAKind(5);
-//                if (value == 0) {
-//                    value = enginStigAlert();
-//                }
-//                if (value == -1) {
-//                    break;
-//                } else if (value == 1) {
-//                    fxLyatzi.setText(Integer.toString(0));
+                if(value != 0){
+                    value = 50;
+                }
                 break;
                 }
             return value;
         }
 
-//        setStigatafla(id, value);
-//        fxLefriSumma.setText(Integer.toString(getSummaStiga(6)));
-//        fxLstigAlls.setText(Integer.toString(getSummaStiga(15)));
-//    }
-
     /**
-     * Reiknar stig fyrir 1-6
-     *
-     * @param index    int segir til um gerð teninga
-     * @param nrOfDice int segir til um fjölda þesskonar teninga.
-     * @return stig
+     * Skráir stig í fylki sem heldur um stigatöflu.
+     * @param index sæti í fylki
+     * @param value stig
      */
-//    private int calculateScore(int index, int nrOfDice) {
-//            return index * nrOfDice;
-//        }
-//    }
     private void setScore(int index, int value) {
         stigatafla[index] = value;
-//        for (int i = 0; i < stigatafla.length; i++) {
-//            System.out.print(stigatafla[i]);
-//        }
-//        System.out.println();
     }
 
+    /**
+     * birtir Warning Dialog
+     * @return 1 fyrir já
+     * @return -1 fyrir cancel
+     */
     private int enginStigAlert() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Þessi valmöguleiki gefur 0 stig. Ertu viss um að þú viljir gera þetta?",
                 ButtonType.YES, ButtonType.CANCEL);
@@ -386,7 +331,7 @@ public class Controller implements Initializable {
 
     /**
      * Reiknar summu stigatöflu frá byrjun að n-ta staki.
-     * n = 15 reiknar heildarsummu stiga.
+     * n = 17 reiknar heildarsummu stiga.
      *
      * @param n int fjöldi liða sem skal leggja saman
      * @return int sum summa stiga
@@ -394,13 +339,25 @@ public class Controller implements Initializable {
     private int getSummaStiga(int n) {
         int sum = 0;
         for (int i = 1; i <= n; i++) {
-            sum += stigatafla[i];
+            if(stigatafla[i] != -1)
+                sum += stigatafla[i];
         }
         if (n > 7) {
-            sum += stigatafla[0];
+            sum += stigatafla[0];               //Bónus fyrir efstu 6.
         }
         return sum;
     }
+    private void disableAllScoreButtons(){
+        ObservableList<Node> buttons = fxStigatafla.getChildren();
+        for(int i = 0; i < OFFSET; i++){
+            buttons.get(i).setDisable(true);
+        }
+    }
+    private void enableUnusedScoreButtons(){
+        ObservableList<Node> buttons = fxStigatafla.getChildren();
+        for(int i = 1; i < stigatafla.length; i++){
+            if(stigatafla[i] == -1)
+                buttons.get(i-1).setDisable(false);
+        }
+    }
 }
-
-
