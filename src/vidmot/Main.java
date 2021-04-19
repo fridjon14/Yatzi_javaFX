@@ -1,16 +1,18 @@
 package vidmot;
 
 import javafx.application.Application;
-import javafx.scene.Parent;
-import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 
 public class Main extends Application {
 
+
     @Override
     public void start(Stage primaryStage) throws Exception{
+        String[] leikmennNofn = getLeikmennNofn();
         FXMLLoader loader1 = new FXMLLoader(getClass().getResource("sample.fxml"));
         Parent root1 = loader1.load();
         nyrGluggi(primaryStage, root1, "Yahtzee");
@@ -21,10 +23,12 @@ public class Main extends Application {
         new Scene(root2,650,700);
         Controller c2 = loader2.getController();
 
-        stillaController(c1, c2, "A");
-        stillaController(c2, c1, "B");
+        stillaController(c1, c2, leikmennNofn[0]);
+        stillaController(c2, c1, leikmennNofn[1]);
     }
+    private void startGame(Stage stage){
 
+    }
      /**
      * Birtir nýja senu sem er í root í glugganum s með titlinum t
      * @param s glugginn
@@ -44,8 +48,17 @@ public class Main extends Application {
         c1.birtaNafnLeikmanns();
         c1.setMotherjinn(c2);
     }
-
+    private String[] getLeikmennNofn() throws java.io.IOException {
+        FXMLLoader dLoader = new FXMLLoader (getClass().getResource("nofnLeikmanna.fxml"));
+        dLoader.load();
+        NofnLeikmannaController d1 = dLoader.getController();
+        return d1.hvadHeitaLeikmenn();
+    }
     public static void main(String[] args) {
         launch(args);
+    }
+
+
+    public void resetGame() throws Exception {
     }
 }

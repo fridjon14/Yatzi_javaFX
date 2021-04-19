@@ -9,7 +9,7 @@ import java.util.Random;
  * kastað.
  *
  * @author Ebba Þóra Hvannberg ebba@hi.is
-
+ * @author Friðjón Sigvaldason frs5@hi.is
  */
 public class Teningar {
 
@@ -54,6 +54,10 @@ public class Teningar {
         return !geymdur[i];
     }
 
+    /**
+     * Geymir eða fríar i-ta tening
+     * @param i
+     */
     public void toggleGeymdur(int i) {
         geymdur[i] = !geymdur[i];
     }
@@ -104,15 +108,16 @@ public class Teningar {
         for (int i=0; i < teningar.length; i++) {
             if (getNotGeymdur(i)) {
                 teningar[i] = naestaRandomTala();
-//                System.out.println(teningar[i]);
             }
         }
         return teningar;
     }
 
-    public void upphafsstillaFjoldiKasta() {
-        this.fjoldiKasta = FJOLDIKASTA;
-    }
+    /**
+     * Leggur saman stig allra teninga af einhverju gildi.
+     * @param x gildi þeirra teninga sem á að telja
+     * @return skilar summu allra teninga með gildið x.
+     */
     public int calculateScoreFromDiceWithValue_X(int x){
         int c = 0;
         for(int i = 0; i < 5; i++){
@@ -122,6 +127,11 @@ public class Teningar {
         }
         return c * x;
     }
+
+    /**
+     * Leggur saman stig allra teninganna
+     * @return summu allra teninga.
+     */
     public int summaAllraTeninga(){
         int value = 0;
         for (int i = 0; i < teningar.length; i++){
@@ -132,10 +142,10 @@ public class Teningar {
 
 
     /**
-     * Leitar að 2/3/4 eins, byrjar á 6 og vinnur sig niður,
+     * Leitar að 2/3/4/5 eins, byrjar á 6 og vinnur sig niður,
      * @param n int fjöldi samskonar staka sem leitað er að.
      * @return stigafjölda fyrir hæsta par sem eru í teningunum.
-     * @return skilar 0 ef ekkert par er í boði.
+     * @return skilar 0 ef ekki eru n eins í boði.
      */
 
     public int validate_n_OfAKind(int n){

@@ -1,23 +1,21 @@
 package vidmot;
 
 
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -28,6 +26,7 @@ public class Controller implements Initializable {
     private final String[] MYNDIR = new String[]{"1", "2", "3", "4", "5", "6"};
     private int[] stigatafla = new int[18];
     private static final int OFFSET = 17;
+    private int leikLokið = 0;
 
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -77,7 +76,10 @@ public class Controller implements Initializable {
     private Teningar teningar = null;
 
 
-
+    /**
+     *
+     * @param mEvent
+     */
     @FXML
     private void geymaTening(MouseEvent mEvent) {
         Node n = (Node) mEvent.getTarget();
@@ -114,6 +116,17 @@ public class Controller implements Initializable {
             showDiceValue(i);
         }
         setTheTable();
+        if(leikLokið == 1){                                     //þegar leikmaður klárar alla stigatöfluna verður
+            leikLokið = leikLokið();                            //leikLokið = 1, næst þegar hann ætti að gera tilkynnast
+            if(leikLokið == 2){                                 // úrslit og val um að byrja upp á nýtt eða hætta.
+                Main v = new Main();
+                //restart game
+            }
+            else if(leikLokið == 3){
+                Platform.exit();
+            }
+        }
+
 
     }
 
@@ -145,12 +158,9 @@ public class Controller implements Initializable {
     public void handleScoring(ActionEvent event) {
         Node n = (Node) event.getTarget();
         int id = Integer.parseInt(n.getId());
-        System.out.println(id);
         ObservableList<Node> labels = fxStigatafla.getChildren();
 
-
         int score = calculateScore(id);
-        //int score = calculateScore(value, numberOfTheseTypeDice);
         Label l = (Label) labels.get(id + OFFSET);
         Label heldarstig = (Label) labels.get(2*OFFSET+1);
         Label bonusSum = (Label) labels.get(7+OFFSET);
@@ -171,6 +181,11 @@ public class Controller implements Initializable {
             validateBonus(bonus);
             heldarstig.setText(Integer.toString(getSummaStiga(17)));
             bonusSum.setText(Integer.toString(getSummaStiga(6)));
+
+            if(hefurLokiðLeik()){
+                leikLokið += 1;
+            }
+            System.out.println(leikLokið);
         }
     }
     /**
@@ -304,7 +319,7 @@ public class Controller implements Initializable {
      */
     private int enginStigAlert() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Þessi valmöguleiki gefur 0 stig. Ertu viss um að þú viljir gera þetta?",
-                ButtonType.YES, ButtonType.CANCEL);
+                  ButtonType.YES,  ButtonType.CANCEL);
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.YES) {
@@ -315,7 +330,40 @@ public class Controller implements Initializable {
         }
         return -1;
     }
+    private int leikLokið() {
+        ButtonType ja = new ButtonType("Nýr leikur", ButtonBar.ButtonData.YES);
+        ButtonType nei = new ButtonType("Hætta", ButtonBar.ButtonData.NO);
 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,  "viltu spila aftur?",
+                ja, nei);
+        int a, b = 0;
+
+        a = motherji.getSummaStiga(17);
+        b = getSummaStiga(17);
+        String winner = "";
+        if(a < b){
+            winner = l.getNafn() + ". Þú vannst!";
+        }
+        else if(a > b){
+            winner = motherji.l.getNafn() + ". Þú vannst!";
+        }
+        else if(a == b){
+            winner = "Það var jafntefli";
+        }
+        alert.setTitle("Leik Lokið");
+        alert.setHeaderText("Til hamingju, " + winner);
+        alert.setContentText("Annan leik?");
+        Optional<ButtonType> result = alert.showAndWait();
+
+
+        if (result.orElse(nei) == ja) {
+            return 2;
+        }
+        if (result.orElse(ja) == nei) {
+            return 3;
+        }
+        return 1;
+    }
     /**
      * Stillir upp teningum til að kasta
      * Stillir köst eftir = 3
@@ -347,17 +395,39 @@ public class Controller implements Initializable {
         }
         return sum;
     }
+
+    /**
+     * Gerir alla valmöguleika óvirka
+     */
     private void disableAllScoreButtons(){
         ObservableList<Node> buttons = fxStigatafla.getChildren();
         for(int i = 0; i < OFFSET; i++){
             buttons.get(i).setDisable(true);
         }
     }
+
+    /**
+     * Virkjar alla ónotaða svarmöguleika leikmanns
+     */
     private void enableUnusedScoreButtons(){
         ObservableList<Node> buttons = fxStigatafla.getChildren();
         for(int i = 1; i < stigatafla.length; i++){
             if(stigatafla[i] == -1)
                 buttons.get(i-1).setDisable(false);
         }
+    }
+
+    /**
+     * Fer í gegnum stigatöflu og athugar hvort
+     * einhver svarmöguleiku sé ónotaður.
+     * @return true ef allir leikmaður hefur lokið leik.
+     */
+    private boolean hefurLokiðLeik(){
+        for(int i = stigatafla.length - 1; i >= 0; i--){      //Byrjum á yatzi og vinnum okkur niður til að fækka
+            if(stigatafla[i] == -1){                          //reikniaðgerðum. yatzi og áhætta klárast yfirleitt síðast
+                return false;
+            }
+        }
+        return true;
     }
 }
