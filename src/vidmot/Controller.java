@@ -104,7 +104,7 @@ public class Controller implements Initializable {
     }
 
     @FXML
-    private void naestiLeikmadur(ActionEvent actionEvent) {
+    private void naestiLeikmadur(ActionEvent actionEvent) throws Exception {
         fxSkiptaUmLeikmann.setDisable(true);
         enableUnusedScoreButtons();
         Stage s = (Stage) fxLeikmadur.getScene().getWindow();
@@ -116,18 +116,11 @@ public class Controller implements Initializable {
             showDiceValue(i);
         }
         setTheTable();
-        if(leikLokið == 1){                                     //þegar leikmaður klárar alla stigatöfluna verður
-            leikLokið = leikLokið();                            //leikLokið = 1, næst þegar hann ætti að gera tilkynnast
-            if(leikLokið == 2){                                 // úrslit og val um að byrja upp á nýtt eða hætta.
-                Main v = new Main();
-                //restart game
-            }
-            else if(leikLokið == 3){
-                Platform.exit();
-            }
+        //leiksLok();
+
+        if(hefurLokiðLeik() && motherji.hefurLokiðLeik()) {
+            leiksLok();
         }
-
-
     }
 
     public void setLeikmadur(String nafn) {
@@ -182,10 +175,6 @@ public class Controller implements Initializable {
             heldarstig.setText(Integer.toString(getSummaStiga(17)));
             bonusSum.setText(Integer.toString(getSummaStiga(6)));
 
-            if(hefurLokiðLeik()){
-                leikLokið += 1;
-            }
-            System.out.println(leikLokið);
         }
     }
     /**
@@ -341,18 +330,27 @@ public class Controller implements Initializable {
         a = motherji.getSummaStiga(17);
         b = getSummaStiga(17);
         String winner = "";
+        String lokastig1,lokastig2 = "";
         if(a < b){
             winner = l.getNafn() + ". Þú vannst!";
+
         }
         else if(a > b){
             winner = motherji.l.getNafn() + ". Þú vannst!";
+
         }
         else if(a == b){
             winner = "Það var jafntefli";
+            lokastig1 = "Báðir með " + a + " stig.";
         }
+        lokastig1 = " " + l.getNafn() + " fékk " + b + " stig";
+        lokastig2 = " " + motherji.l.getNafn() + " fékk " + a + " stig";
+
         alert.setTitle("Leik Lokið");
-        alert.setHeaderText("Til hamingju, " + winner);
+        alert.setHeaderText("Til hamingju, " + winner + "\n" + lokastig1 + " " + lokastig2);
         alert.setContentText("Annan leik?");
+
+
         Optional<ButtonType> result = alert.showAndWait();
 
 
@@ -429,5 +427,33 @@ public class Controller implements Initializable {
             }
         }
         return true;
+    }
+    private void leiksLok() throws Exception {
+                                                             //þegar leikmaður klárar alla stigatöfluna verður
+        int opt = leikLokið();                            //leikLokið = 1, næst þegar hann ætti að gera tilkynnast
+        if(opt == 2){                                 // úrslit og val um að byrja upp á nýtt eða hætta.
+            Main m = new Main();
+            m.resetGame();
+            //restart game
+        }
+        else if(opt == 3){
+            Platform.exit();
+        }
+
+    }
+    private void hreinsaTil(){
+       // this.fxStigatafla.clear();
+
+    }
+    @FXML
+    private void closeProgram(){
+        Platform.exit();
+    }
+    @FXML
+    private void nyrLeikur() throws Exception {
+        Stage s = (Stage) fxLeikmadur.getScene().getWindow();
+        s.close();
+        Main m = new Main();
+        m.startGame(s);
     }
 }

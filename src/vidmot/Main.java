@@ -9,9 +9,11 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    private Stage ps;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        ps = primaryStage;
         String[] leikmennNofn = getLeikmennNofn();
         FXMLLoader loader1 = new FXMLLoader(getClass().getResource("sample.fxml"));
         Parent root1 = loader1.load();
@@ -25,10 +27,13 @@ public class Main extends Application {
 
         stillaController(c1, c2, leikmennNofn[0]);
         stillaController(c2, c1, leikmennNofn[1]);
+        //primaryStage.close();
     }
-    private void startGame(Stage stage){
+    public void startGame(Stage primaryStage) throws Exception{
+        Stage s = new Stage();
+        start(s);
+    }
 
-    }
      /**
      * Birtir nýja senu sem er í root í glugganum s með titlinum t
      * @param s glugginn
@@ -37,11 +42,16 @@ public class Main extends Application {
      */
 
     private void nyrGluggi(Stage s, Parent root, String t) {
+        if(s == null) {
+            s = new Stage();
+        }
+
         s.setTitle(t);
         Scene s1 = new Scene(root, 650, 700);
         s.setScene(s1);
         s.show();
     }
+
 
     private void stillaController(Controller c1, Controller c2, String s) {
         c1.setLeikmadur(s);
@@ -58,7 +68,15 @@ public class Main extends Application {
         launch(args);
     }
 
-
     public void resetGame() throws Exception {
+      //  start(ps);
+    //    cleanup();
+    //    startGame(ps);
+    }
+    public void cleanup() throws Exception {
+        ps.close();
+
+       // ps = new Stage();
+
     }
 }

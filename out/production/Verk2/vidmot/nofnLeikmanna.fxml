@@ -33,8 +33,4 @@
          </children>
       </AnchorPane>
    </content>
-   <buttonTypes>
-      <ButtonType fx:constant="OK" />
-      <ButtonType fx:constant="CANCEL" />
-   </buttonTypes>
 </DialogPane>
